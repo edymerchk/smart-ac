@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_144707) do
+ActiveRecord::Schema.define(version: 2019_08_12_155133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,4 +24,16 @@ ActiveRecord::Schema.define(version: 2019_08_12_144707) do
     t.index ["serial_number"], name: "index_devices_on_serial_number", unique: true
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.bigint "device_id"
+    t.decimal "temperature"
+    t.string "air_humidity"
+    t.decimal "carbon_monoxide_level"
+    t.string "health_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_reports_on_device_id"
+  end
+
+  add_foreign_key "reports", "devices"
 end
