@@ -22,7 +22,7 @@ RSpec.describe "Report Creation API", type: :request do
     let(:payload) do
       {
         data: {
-          type: "devices",
+          type: "reports",
           attributes: {
             device_id: device.id,
             temperature: 3.10,
