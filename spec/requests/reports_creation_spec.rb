@@ -11,7 +11,8 @@ RSpec.describe "Report Creation API", type: :request do
 
   let(:headers) do
     {
-      "Content-Type"  => "application/vnd.api+json"
+      "Content-Type"  => "application/vnd.api+json",
+      "Authorization" => device.token,
     }
   end
 
@@ -70,6 +71,28 @@ RSpec.describe "Report Creation API", type: :request do
       expect{
         subject
       }.to_not change { device.reports.count }
+    end
+  end
+
+  context "when the authorization header is missing" do
+    subject do
+      post("/api/v1/reports")
+    end
+
+    it "returns an 401 status code" do
+      subject
+      expect(response.status).to eq(401)
+    end
+  end
+
+  context "when the authorization header is wrong" do
+    subject do
+      post("/api/v1/reports", headers: { "Authorization" => "INVALID_TOKEN" })
+    end
+
+    it "returns an 401 status code" do
+      subject
+      expect(response.status).to eq(401)
     end
   end
 end

@@ -1,6 +1,8 @@
 module Api
   module V1
     class ReportsController < BaseController
+      before_action :authenticate!
+
       deserializable_resource :report, only: :create
 
       def create
