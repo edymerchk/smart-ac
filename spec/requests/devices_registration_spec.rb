@@ -28,6 +28,11 @@ RSpec.describe "Device Registration API", type: :request do
       }
     end
 
+    it 'returns a 201 status' do
+      subject
+      expect(response.status).to eq(201)
+    end
+
     it 'creates a new device' do
       expect{
         subject
@@ -45,6 +50,11 @@ RSpec.describe "Device Registration API", type: :request do
           }
         }
       }
+    end
+
+    it 'returns a 422 status' do
+      subject
+      expect(response.status).to eq(422)
     end
 
     it 'does not creates a new device' do

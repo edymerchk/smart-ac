@@ -9,8 +9,6 @@ module Api
         report = Report.new(report_params)
         report.save!
         render jsonapi: report, status: 201
-      rescue ActiveRecord::RecordInvalid
-        head 422
       end
 
       private

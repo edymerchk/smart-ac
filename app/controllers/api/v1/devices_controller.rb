@@ -6,9 +6,7 @@ module Api
       def create
         device = Device.new(device_params)
         device.save!
-        render jsonapi: device
-      rescue ActiveRecord::RecordInvalid
-        head 422
+        render jsonapi: device, status: 201
       end
 
       private
