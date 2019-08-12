@@ -2,7 +2,7 @@ class Device < ApplicationRecord
   validates :serial_number, presence: true, uniqueness: true
   validates :firmware_version, presence: true
 
-  has_many :reports
+  has_many :reports, dependent: :destroy
 
   before_create :generate_token
 
