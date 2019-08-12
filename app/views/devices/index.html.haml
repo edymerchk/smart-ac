@@ -1,0 +1,17 @@
+.row
+  .panel.panel-default.panel-table
+    .panel-heading
+      .row
+        .col
+          %h3.panel-title.text-center Devices
+    .panel-body
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Serial Number
+            %th Firmware Version
+        %tbody
+          - @devices.each do |device|
+            %tr
+              %td.col-md-6= link_to device.serial_number, device_path(device.id)
+              %td.col-md-6= device.firmware_version
