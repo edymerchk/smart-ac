@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  devise_for :admins
+  # Admin
+    root to: "home#index"
+
+
+  # API
   namespace :api do
     namespace :v1 do
       resources :devices, only: [:create]
