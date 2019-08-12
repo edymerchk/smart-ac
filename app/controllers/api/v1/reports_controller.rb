@@ -22,7 +22,7 @@ module Api
       private
 
       def report_params
-        params.require(:report).permit(:device_id, :temperature, :air_humidity, :carbon_monoxide_level, :health_status)
+        params.require(:report).permit(*report_attributes)
       end
 
       def report_errors
@@ -35,8 +35,12 @@ module Api
 
       def report_objects
         params["_jsonapi"]["data"].map do |param|
-          Report.new(param.require(:attributes).permit(:device_id, :temperature, :air_humidity, :carbon_monoxide_level, :health_status))
+          Report.new(param.require(:attributes).permit(*report_attributes))
         end
+      end
+
+      def report_attributes
+        [:device_id, :temperature, :air_humidity, :carbon_monoxide_level, :health_status]
       end
     end
   end
