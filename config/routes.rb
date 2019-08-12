@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
+  # Admin Site
   devise_for :admins
-  # Admin
-    root to: "home#index"
-
+  root to: "home#index"
 
   # API
   namespace :api do
