@@ -2,6 +2,8 @@ class Device < ApplicationRecord
   validates :serial_number, presence: true, uniqueness: true
   validates :firmware_version, presence: true
 
+  has_many :reports
+
   before_create :generate_token
 
   protected
