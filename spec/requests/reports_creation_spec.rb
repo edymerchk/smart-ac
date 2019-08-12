@@ -28,7 +28,8 @@ RSpec.describe "Report Creation API", type: :request do
             temperature: 3.10,
             air_humidity: 10 ,
             carbon_monoxide_level: 4.5,
-            health_status: "good"
+            health_status: "good",
+            taken_at: Time.now.to_i
           }
         }
       }
@@ -56,7 +57,8 @@ RSpec.describe "Report Creation API", type: :request do
             temperature: 3.10,
             air_humidity: 10 ,
             carbon_monoxide_level: 4.5,
-            health_status: "good"
+            health_status: "good",
+            taken_at: Time.now.to_i
           }
         }
       }

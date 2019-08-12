@@ -5,5 +5,6 @@ class Report < ApplicationRecord
   validates :air_humidity, presence: true
   validates :carbon_monoxide_level, presence: true
   validates :health_status, presence: true
+  validates :taken_at, presence: true
 
 end

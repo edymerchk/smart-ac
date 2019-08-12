@@ -6,7 +6,7 @@ module Api
       deserializable_resource :report, only: :create
 
       def create
-        report = Report.new(report_params)
+        report = Report.new(format_taken_at(report_params))
         report.save!
         render jsonapi: report, status: 201
       end
@@ -35,12 +35,17 @@ module Api
 
       def report_objects
         params["_jsonapi"]["data"].map do |param|
-          Report.new(param.require(:attributes).permit(*report_attributes))
+          params_hash = param.require(:attributes).permit(*report_attributes)
+          Report.new(format_taken_at(params_hash))
         end
       end
 
+      def format_taken_at(hash)
+        hash.merge!(taken_at: Time.at(hash[:taken_at]))
+      end
+
       def report_attributes
-        [:device_id, :temperature, :air_humidity, :carbon_monoxide_level, :health_status]
+        [:device_id, :temperature, :air_humidity, :carbon_monoxide_level, :health_status, :taken_at]
       end
     end
   end
