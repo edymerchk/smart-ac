@@ -38,6 +38,11 @@ RSpec.describe "Device Registration API", type: :request do
         subject
       }.to change { Device.count }.by(1)
     end
+
+    it 'returns an auth token' do
+      subject
+      expect(JSON.parse(response.body)["data"]["attributes"]["token"]).not_to be_empty
+    end
   end
 
   context 'with invalid attributes' do
