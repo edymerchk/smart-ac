@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem 'bundler'
 gem 'simple_form'
 gem 'chartjs-ror'
+gem 'sendgrid-actionmailer'
+
 
 group :development, :test do
   gem 'pry-byebug'
