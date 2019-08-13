@@ -13,7 +13,8 @@
     %hr/
 
     - if @latest_report
-      %h5 Actual Values
+      %h5 Current Values
+
       %ul
         %li
           %p Temperature: #{@latest_report.temperature} Celcius
@@ -21,6 +22,7 @@
           %p Air humidity: #{@latest_report.air_humidity}%
         %li
           %p Carbon Monoxide level: #{@latest_report.carbon_monoxide_level}
+      %small.float-right Reported #{time_ago_in_words(@latest_report.taken_at)} ago
 
     - else
       %h5 This device has not yet reported the first time
