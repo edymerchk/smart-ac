@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: "devices#index"
   resources :devices, only: [:index, :show]
   resources :admins, only: [:index] do
+    post :block
+    post :unblock
   end
 
   # API

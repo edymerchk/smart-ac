@@ -13,7 +13,13 @@
             %th
         %tbody
           - @admins.each do |admin|
+            - next if admin == current_admin
             %tr
               %td= admin.email
               %td= admin.created_at
+              %td
+                -if admin.blocked
+                  = link_to "Unblock", admin_unblock_path(admin), method: :post, class: "btn btn-success btn-sm", data: { confirm: '¿Are you sure?' }
+                -else
+                  = link_to "Block", admin_block_path(admin), method: :post, class: "btn btn-danger btn-sm", data: { confirm: '¿Are you sure?' }
 
