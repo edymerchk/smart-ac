@@ -6,7 +6,7 @@
           %h3.panel-title.text-center Devices
     .panel-body
       = simple_form_for :search, url: devices_path, method: "GET", html: { class: 'form-inline' } do |f|
-        = f.input :serial, id: "serial", label: false, required: false, input_html:{ value: params[:search][:serial] }
+        = f.input :serial, id: "serial", label: false, required: false, input_html:{ value: params.dig(:search, :serial) }
         = f.submit "Search", class: "btn btn-primary"
       %table.table.table-striped.table-bordered
         %thead

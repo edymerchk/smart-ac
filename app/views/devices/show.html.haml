@@ -1,8 +1,29 @@
 .row
-  .panel.panel-default.panel-table
-    .panel-heading
-      .row
-        .col
-          %h3.panel-title.text-center Device
-    .panel-body
-      = @device.serial_number
+  .col-md-4.col-xs-12.col-sm-6.col-lg-4
+    %img.img{:alt => "stack photo", :src => "https://image.flaticon.com/icons/svg/34/34680.svg"}/
+  .col-md-8.col-xs-12.col-sm-6.col-lg-8
+    .container
+      %h2 Device #{@device.id}
+    %hr/
+    %ul.container.details
+      %li
+        %p Serial Number: #{@device.serial_number}
+      %li
+        %p Firmware Version: #{@device.firmware_version}
+    %hr/
+
+    - if @latest_report
+      %h5 Actual Values
+      %ul
+        %li
+          %p Temperature: #{@latest_report.temperature} Celcius
+        %li
+          %p Air humidity: #{@latest_report.air_humidity}%
+        %li
+          %p Carbon Monoxide level: #{@latest_report.carbon_monoxide_level}
+
+    - else
+      %h5 This device has not yet reported the first time
+
+
+%hr/
