@@ -18,11 +18,11 @@ Admin.create!(email: "admin@admin.com", password: "adminadmin")
   1000.times do
     Report.create(
       device: device,
-      temperature: rand(1.0...99.9).round(2),
+      temperature: rand(1.0...35.0).round(2),
       air_humidity: [*1..100].sample,
-      carbon_monoxide_level: rand(1.0...99.9).round(2),
+      carbon_monoxide_level: rand(1.0...9.9).round(2),
       health_status: "good",
-      taken_at: rand(3.months.ago..Time.now)
+      taken_at: rand(7.months.ago..Time.now)
     )
   end
 end
