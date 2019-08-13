@@ -8,7 +8,7 @@
 
 
 Admin.create!(email: "admin@admin.com", password: "adminadmin")
-
+Admin.create!(email: "edyhack@gmail.com", password: "adminadmin")
 
 20.times do
   device = Device.create(

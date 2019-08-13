@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # Admin Site
   devise_for :admins
-  root to: "home#index"
+  root to: "devices#index"
   resources :devices, only: [:index, :show]
 
   # API
