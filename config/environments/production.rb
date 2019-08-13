@@ -97,4 +97,6 @@ Rails.application.configure do
     api_key: ENV['SENDGRID_API_KEY'],
     raise_delivery_errors: true
   }
+
+  config.action_mailer.default_url_options = { :host => "smart-ac-edy.herokuapp.com" }
 end
