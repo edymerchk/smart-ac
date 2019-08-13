@@ -1,0 +1,19 @@
+.row
+  .panel.panel-default.panel-table
+    .panel-heading
+      .row
+        .col
+          %h3.panel-title.text-center Administrators
+    .panel-body
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Email
+            %th Created at
+            %th
+        %tbody
+          - @admins.each do |admin|
+            %tr
+              %td= admin.email
+              %td= admin.created_at
+

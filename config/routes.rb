@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :admins
   root to: "devices#index"
   resources :devices, only: [:index, :show]
+  resources :admins, only: [:index] do
+  end
 
   # API
   namespace :api do
