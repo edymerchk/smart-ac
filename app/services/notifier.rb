@@ -15,8 +15,10 @@ class Notifier
   private
 
   def send_health_alert
+    NotifierMailer.send_health_alert(@report).deliver
   end
 
   def send_monoxide_alert
+    NotifierMailer.send_health_alert(@report).deliver
   end
 end

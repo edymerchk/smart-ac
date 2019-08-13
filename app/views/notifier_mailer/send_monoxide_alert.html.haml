@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1 Device Carbon Monoxide Level Alert
+    %p
+      The device with serial_number: #{@device.serial_number} has the carbon monoxide level on: #{@report.carbon_monoxide_level}
+
+    %p You can check this information  #{link_to "here", device_url(@device.id)}
