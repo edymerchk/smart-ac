@@ -5,13 +5,13 @@ RSpec.describe Notifier do
 
   let(:mailer) { double(:notifier, deliver: true) }
 
-  before do
-    allow(NotifierMailer).to receive(:send_health_alert) { mailer }
-  end
-
   describe "notify" do
     context 'when the report has a warning health_status' do
-      let(:report) { build(:report, health_status: "needs_service") }
+      before do
+        allow(NotifierMailer).to receive(:send_health_alert) { mailer }
+      end
+
+      let(:report) { create(:report, health_status: "needs_service") }
 
       it "triggers a mailer notification" do
         expect(mailer).to receive(:deliver)
@@ -20,7 +20,12 @@ RSpec.describe Notifier do
     end
 
     context 'when the report has a monoxide level greater than 9 PPM' do
-      let(:report) { build(:report, carbon_monoxide_level: 10) }
+
+      before do
+        allow(NotifierMailer).to receive(:send_monoxide_alert) { mailer }
+      end
+
+      let(:report) { create(:report, carbon_monoxide_level: 10) }
 
       it "triggers a mailer notification" do
         expect(mailer).to receive(:deliver)
