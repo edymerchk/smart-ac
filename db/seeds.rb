@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Admin.create!(email: "admin@admin.com", password: "adminadmin")
+
+
 20.times do
   device = Device.create(
     serial_number: SecureRandom.hex(32),
