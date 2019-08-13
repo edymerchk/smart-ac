@@ -6,6 +6,11 @@ class Device < ApplicationRecord
 
   before_create :generate_token
 
+
+  def self.search(q)
+    where("serial_number ilike :q", q: "%#{q}%")
+  end
+
   protected
 
   def generate_token
