@@ -6,10 +6,4 @@ class Report < ApplicationRecord
   validates :carbon_monoxide_level, presence: true
   validates :health_status, presence: true
   validates :taken_at, presence: true
-
-  after_create :notify
-
-  def notify
-    Notifier.new(self).notify
-  end
 end

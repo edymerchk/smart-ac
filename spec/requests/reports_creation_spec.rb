@@ -17,6 +17,10 @@ RSpec.describe "Report Creation API", type: :request do
   end
 
   let(:device) { create(:device) }
+  let(:report) { build(:report) }
+  let(:notifier) { double(:notifier, notify: true) }
+
+  before { allow(Notifier).to receive(:new) { notifier } }
 
   context 'with valid attributes' do
     let(:payload) do
@@ -44,6 +48,11 @@ RSpec.describe "Report Creation API", type: :request do
       expect{
         subject
       }.to change { device.reports.count }.by(1)
+    end
+
+    it "calls the Notifier after a report is saved" do
+      expect(notifier).to receive(:notify)
+      subject
     end
   end
 

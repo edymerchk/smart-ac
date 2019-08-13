@@ -8,11 +8,12 @@ module Api
       def create
         report = Report.new(format_taken_at(report_params))
         report.save!
+        Notifier.new(report).notify
         render jsonapi: report, status: 201
       end
 
       def create_bulk
-        if reports_valid? && report_objects.map(&:save)
+        if reports_valid? && report_objects.map{ |report| save_and_notify(report) }
           head 201
         else
           render json: { errors: {report_errors: report_errors } }, status: 422
@@ -20,6 +21,11 @@ module Api
       end
 
       private
+
+      def save_and_notify(report)
+        report.save
+        Notifier.new(report).notify
+      end
 
       def report_params
         params.require(:report).permit(*report_attributes)
