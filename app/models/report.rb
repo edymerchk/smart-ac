@@ -7,4 +7,9 @@ class Report < ApplicationRecord
   validates :health_status, presence: true
   validates :taken_at, presence: true
 
+  after_create :notify
+
+  def notify
+    Notifier.new(self).notify
+  end
 end
