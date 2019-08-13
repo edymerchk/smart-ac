@@ -22,6 +22,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'bundler'
 gem 'simple_form'
+gem 'chartjs-ror'
 
 group :development, :test do
   gem 'pry-byebug'

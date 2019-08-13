@@ -26,6 +26,13 @@
 
     - else
       %h5 This device has not yet reported the first time
-
-
 %hr/
+
+%h4.text-center Year Stats
+.row
+  .col-md-4
+    = line_chart @monoxide_graph, {}
+  .col-md-4
+    = line_chart @temp_graph, {}
+  .col-md-4
+    = line_chart @air_humidity_graph, {}

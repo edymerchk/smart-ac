@@ -15,7 +15,7 @@ Admin.create!(email: "admin@admin.com", password: "adminadmin")
     serial_number: SecureRandom.hex(32),
     firmware_version: ["1", "2"].sample
   )
-  1000.times do
+  200.times do
     Report.create(
       device: device,
       temperature: rand(1.0...35.0).round(2),
