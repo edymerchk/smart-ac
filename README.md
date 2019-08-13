@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## API Documentation
 
-Things you may want to cover:
+### Endpoints
 
-* Ruby version
+1. [Register Device](apidocs/register_device.md)
+1. [Report Creation](apidocs/report_creation.md)
+1. [Report Bulk Creation](apidocs/report_bulk_creation.md)
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Author
+This was written by [Luis Edimerchk Laverde](http:///edymerchk.com).
